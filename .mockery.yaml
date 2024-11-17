@@ -1,0 +1,20 @@
+with-expecter: true
+packages:
+  github.com/a-novel-kit/quicklog:
+    config:
+      all: True
+      recursive: true
+      outpkg: quicklogmocks
+      dir: mocks
+  github.com/a-novel-kit/quicklog/messages:
+    config:
+      all: True
+      recursive: true
+      outpkg: messagesmocks
+      dir: messages/mocks
+  github.com/a-novel-kit/quicklog/loggers:
+    config:
+      all: True
+      recursive: true
+      outpkg: loggersmocks
+      dir: loggers/mocks
