@@ -17,20 +17,52 @@ func (_m *MockAnimatedMessage) EXPECT() *MockAnimatedMessage_Expecter {
 	return &MockAnimatedMessage_Expecter{mock: &_m.Mock}
 }
 
+// Close provides a mock function with given fields:
+func (_m *MockAnimatedMessage) Close() {
+	_m.Called()
+}
+
+// MockAnimatedMessage_Close_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Close'
+type MockAnimatedMessage_Close_Call struct {
+	*mock.Call
+}
+
+// Close is a helper method to define mock.On call
+func (_e *MockAnimatedMessage_Expecter) Close() *MockAnimatedMessage_Close_Call {
+	return &MockAnimatedMessage_Close_Call{Call: _e.mock.On("Close")}
+}
+
+func (_c *MockAnimatedMessage_Close_Call) Run(run func()) *MockAnimatedMessage_Close_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run()
+	})
+	return _c
+}
+
+func (_c *MockAnimatedMessage_Close_Call) Return() *MockAnimatedMessage_Close_Call {
+	_c.Call.Return()
+	return _c
+}
+
+func (_c *MockAnimatedMessage_Close_Call) RunAndReturn(run func()) *MockAnimatedMessage_Close_Call {
+	_c.Call.Return(run)
+	return _c
+}
+
 // RunJSON provides a mock function with given fields:
-func (_m *MockAnimatedMessage) RunJSON() chan map[string]interface{} {
+func (_m *MockAnimatedMessage) RunJSON() <-chan map[string]interface{} {
 	ret := _m.Called()
 
 	if len(ret) == 0 {
 		panic("no return value specified for RunJSON")
 	}
 
-	var r0 chan map[string]interface{}
-	if rf, ok := ret.Get(0).(func() chan map[string]interface{}); ok {
+	var r0 <-chan map[string]interface{}
+	if rf, ok := ret.Get(0).(func() <-chan map[string]interface{}); ok {
 		r0 = rf()
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(chan map[string]interface{})
+			r0 = ret.Get(0).(<-chan map[string]interface{})
 		}
 	}
 
@@ -54,30 +86,30 @@ func (_c *MockAnimatedMessage_RunJSON_Call) Run(run func()) *MockAnimatedMessage
 	return _c
 }
 
-func (_c *MockAnimatedMessage_RunJSON_Call) Return(_a0 chan map[string]interface{}) *MockAnimatedMessage_RunJSON_Call {
+func (_c *MockAnimatedMessage_RunJSON_Call) Return(_a0 <-chan map[string]interface{}) *MockAnimatedMessage_RunJSON_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MockAnimatedMessage_RunJSON_Call) RunAndReturn(run func() chan map[string]interface{}) *MockAnimatedMessage_RunJSON_Call {
+func (_c *MockAnimatedMessage_RunJSON_Call) RunAndReturn(run func() <-chan map[string]interface{}) *MockAnimatedMessage_RunJSON_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // RunTerminal provides a mock function with given fields: ci
-func (_m *MockAnimatedMessage) RunTerminal(ci bool) chan string {
+func (_m *MockAnimatedMessage) RunTerminal(ci bool) <-chan string {
 	ret := _m.Called(ci)
 
 	if len(ret) == 0 {
 		panic("no return value specified for RunTerminal")
 	}
 
-	var r0 chan string
-	if rf, ok := ret.Get(0).(func(bool) chan string); ok {
+	var r0 <-chan string
+	if rf, ok := ret.Get(0).(func(bool) <-chan string); ok {
 		r0 = rf(ci)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(chan string)
+			r0 = ret.Get(0).(<-chan string)
 		}
 	}
 
@@ -102,12 +134,12 @@ func (_c *MockAnimatedMessage_RunTerminal_Call) Run(run func(ci bool)) *MockAnim
 	return _c
 }
 
-func (_c *MockAnimatedMessage_RunTerminal_Call) Return(_a0 chan string) *MockAnimatedMessage_RunTerminal_Call {
+func (_c *MockAnimatedMessage_RunTerminal_Call) Return(_a0 <-chan string) *MockAnimatedMessage_RunTerminal_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MockAnimatedMessage_RunTerminal_Call) RunAndReturn(run func(bool) chan string) *MockAnimatedMessage_RunTerminal_Call {
+func (_c *MockAnimatedMessage_RunTerminal_Call) RunAndReturn(run func(bool) <-chan string) *MockAnimatedMessage_RunTerminal_Call {
 	_c.Call.Return(run)
 	return _c
 }

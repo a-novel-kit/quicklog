@@ -119,19 +119,19 @@ func (_c *MockLoader_Nest_Call) RunAndReturn(run func(quicklog.Message)) *MockLo
 }
 
 // RunJSON provides a mock function with given fields:
-func (_m *MockLoader) RunJSON() chan map[string]interface{} {
+func (_m *MockLoader) RunJSON() <-chan map[string]interface{} {
 	ret := _m.Called()
 
 	if len(ret) == 0 {
 		panic("no return value specified for RunJSON")
 	}
 
-	var r0 chan map[string]interface{}
-	if rf, ok := ret.Get(0).(func() chan map[string]interface{}); ok {
+	var r0 <-chan map[string]interface{}
+	if rf, ok := ret.Get(0).(func() <-chan map[string]interface{}); ok {
 		r0 = rf()
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(chan map[string]interface{})
+			r0 = ret.Get(0).(<-chan map[string]interface{})
 		}
 	}
 
@@ -155,30 +155,30 @@ func (_c *MockLoader_RunJSON_Call) Run(run func()) *MockLoader_RunJSON_Call {
 	return _c
 }
 
-func (_c *MockLoader_RunJSON_Call) Return(_a0 chan map[string]interface{}) *MockLoader_RunJSON_Call {
+func (_c *MockLoader_RunJSON_Call) Return(_a0 <-chan map[string]interface{}) *MockLoader_RunJSON_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MockLoader_RunJSON_Call) RunAndReturn(run func() chan map[string]interface{}) *MockLoader_RunJSON_Call {
+func (_c *MockLoader_RunJSON_Call) RunAndReturn(run func() <-chan map[string]interface{}) *MockLoader_RunJSON_Call {
 	_c.Call.Return(run)
 	return _c
 }
 
 // RunTerminal provides a mock function with given fields: ci
-func (_m *MockLoader) RunTerminal(ci bool) chan string {
+func (_m *MockLoader) RunTerminal(ci bool) <-chan string {
 	ret := _m.Called(ci)
 
 	if len(ret) == 0 {
 		panic("no return value specified for RunTerminal")
 	}
 
-	var r0 chan string
-	if rf, ok := ret.Get(0).(func(bool) chan string); ok {
+	var r0 <-chan string
+	if rf, ok := ret.Get(0).(func(bool) <-chan string); ok {
 		r0 = rf(ci)
 	} else {
 		if ret.Get(0) != nil {
-			r0 = ret.Get(0).(chan string)
+			r0 = ret.Get(0).(<-chan string)
 		}
 	}
 
@@ -203,12 +203,12 @@ func (_c *MockLoader_RunTerminal_Call) Run(run func(ci bool)) *MockLoader_RunTer
 	return _c
 }
 
-func (_c *MockLoader_RunTerminal_Call) Return(_a0 chan string) *MockLoader_RunTerminal_Call {
+func (_c *MockLoader_RunTerminal_Call) Return(_a0 <-chan string) *MockLoader_RunTerminal_Call {
 	_c.Call.Return(_a0)
 	return _c
 }
 
-func (_c *MockLoader_RunTerminal_Call) RunAndReturn(run func(bool) chan string) *MockLoader_RunTerminal_Call {
+func (_c *MockLoader_RunTerminal_Call) RunAndReturn(run func(bool) <-chan string) *MockLoader_RunTerminal_Call {
 	_c.Call.Return(run)
 	return _c
 }
