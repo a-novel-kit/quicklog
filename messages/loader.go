@@ -300,6 +300,8 @@ func (loader *loaderMessage) closeTicker() {
 	if loader.elapsedUpdateTicker != nil {
 		loader.elapsedUpdateTicker.Stop()
 	}
+
+	loader.wait.Wait()
 }
 
 // Return the elapsed update ticker if it is set. Otherwise, set a new one and return it.
@@ -349,21 +351,21 @@ func (loader *loaderMessage) Update(step string) {
 }
 
 func (loader *loaderMessage) Success(step string) {
+	loader.closeTicker()
+
 	loader.updateTerminalOutput(step, loaderStatusSuccess)
 	loader.updateJSONOutput(step, loaderStatusSuccess)
 	loader.setLastStep(step)
-
-	loader.closeTicker()
 }
 
 func (loader *loaderMessage) Error(err error) {
+	loader.closeTicker()
+
 	message := err.Error()
 
 	loader.updateTerminalOutput(message, loaderStatusError)
 	loader.updateJSONOutput(message, loaderStatusError)
 	loader.setLastStep(message)
-
-	loader.closeTicker()
 }
 
 func (loader *loaderMessage) Close() {
@@ -379,8 +381,6 @@ func (loader *loaderMessage) Close() {
 	loader.mu.Lock()
 	loader.closed = true
 	loader.mu.Unlock()
-
-	loader.wait.Wait()
 }
 
 func (loader *loaderMessage) RunTerminal(isCI bool) <-chan string {
