@@ -6,7 +6,7 @@ require (
 	github.com/a-novel-kit/test-utils v0.1.0
 	github.com/charmbracelet/bubbles v0.20.0
 	github.com/charmbracelet/lipgloss v1.0.0
-	github.com/charmbracelet/x/ansi v0.5.2
+	github.com/charmbracelet/x/ansi v0.6.0
 	github.com/google/uuid v1.6.0
 	github.com/rs/zerolog v1.33.0
 	github.com/samber/lo v1.47.0
